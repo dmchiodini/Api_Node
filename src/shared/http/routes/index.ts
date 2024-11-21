@@ -1,4 +1,4 @@
-import { AppError } from '@shared/errors/AppError';
+import { rolesRouter } from '@roles/http/routes/roules.routes';
 import { Router, Request, Response } from 'express';
 
 const routes = Router();
@@ -8,5 +8,7 @@ routes.get('/', (request: Request, response: Response) => {
     message: 'Olá Dev',
   });
 });
+
+routes.use('/roles', rolesRouter);
 
 export { routes };
