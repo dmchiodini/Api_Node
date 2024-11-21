@@ -1,6 +1,7 @@
 import { Router } from 'express';
 import { createRolesController } from '@roles/useCases/createRole';
 import { RolesRepository } from '@roles/repositories/RolesRepository';
+import { listRolesController } from '@roles/useCases/listRoles';
 
 const rolesRouter = Router();
 const rolesRepository = new RolesRepository();
@@ -10,9 +11,7 @@ rolesRouter.post('/', (request, response) => {
 });
 
 rolesRouter.get('/', (request, response) => {
-  const roles = rolesRepository.findAll();
-
-  return response.status(200).json(roles);
+  return listRolesController.handle(request, response);
 });
 
 export { rolesRouter };
