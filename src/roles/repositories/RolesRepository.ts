@@ -73,7 +73,7 @@ export class RolesRepository {
     return this.repository.findOneBy({ name });
   }
 
-  async findById(name: string): Promise<Role | null> {
-    return this.repository.findOneBy({ name });
+  async findById(id: string): Promise<Role | null> {
+    return this.repository.findOneBy({ id });
   }
 }
