@@ -1,4 +1,5 @@
 import { rolesRouter } from '@roles/http/routes/roules.routes';
+import { usersRouter } from '@users/http/routes/roules.routes';
 import { Router, Request, Response } from 'express';
 
 const routes = Router();
@@ -10,5 +11,6 @@ routes.get('/', (request: Request, response: Response) => {
 });
 
 routes.use('/roles', rolesRouter);
+routes.use('/users', usersRouter);
 
 export { routes };
