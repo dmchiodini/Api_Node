@@ -5,7 +5,6 @@ export type CreateUserDTO = {
   name: string;
   email: string;
   password: string;
-  avatar?: string;
   isAdmin: boolean;
   role: Role;
 };
@@ -29,9 +28,8 @@ export interface IUsersRepository {
     email,
     password,
     isAdmin,
-    avatar,
     role,
-  }: CreateUserDTO): Promise<Role>;
+  }: CreateUserDTO): Promise<User>;
   save(user: User): Promise<User>;
   findAll({
     page,
@@ -40,5 +38,6 @@ export interface IUsersRepository {
   }: PaginateParams): Promise<UsersPaginationProperties>;
   findById(id: string): Promise<User | null>;
   findByName(name: string): Promise<User | null>;
+  findByEmail(email: string): Promise<User | null>;
   delete(user: User): Promise<void>;
 }
