@@ -47,11 +47,6 @@
                       "type": "string"
                     }
                   }
-                },
-                "example": {
-                  "id": "3da0bd6b-58b7-4f5c-ac8d-71b8cf33b577",
-                  "name": "Admin",
-                  "created_at": "2025-01-13T15:28:09.000Z"
                 }
               }
             }
@@ -169,6 +164,11 @@
                       "type": "string"
                     }
                   }
+                },
+                "example": {
+                  "id": "3da0bd6b-58b7-4f5c-ac8d-71b8cf33b577",
+                  "name": "Admin",
+                  "created_at": "2025-01-13T15:28:09.000Z"
                 }
               }
             }
@@ -223,6 +223,34 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "404": {
+            "description": "Role not found."
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Roles"],
+        "summary": "Delete role by ID",
+        "description": "Delete role based on ID",
+        "parameters": [
+            {
+            "name": "id",
+            "in": "path",
+            "description": "Identify of a role",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "style": "label"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No content."
           },
           "400": {
             "description": "Bad request."
