@@ -9,13 +9,13 @@ const createUsersController = container.resolve(CreateUserController);
 usersRouter.post(
   '/',
   celebrate({
-    [Segments.BODY]: Joi.object().keys({
+    [Segments.BODY]: {
       name: Joi.string().required(),
       email: Joi.string().required(),
       password: Joi.string().required(),
-      isAdmin: Joi.boolean().required,
-      role: Joi.string().uuid().required(),
-    }),
+      isAdmin: Joi.boolean().required(),
+      roleId: Joi.string().uuid().required(),
+    },
   }),
   (request, response) => {
     return createUsersController.handle(request, response);
