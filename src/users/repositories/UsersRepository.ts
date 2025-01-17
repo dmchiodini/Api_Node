@@ -1,4 +1,3 @@
-import { Role } from '@roles/entities/Role';
 import { User } from '@users/entities/User';
 import {
   CreateUserDTO,
