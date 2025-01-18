@@ -27,7 +27,6 @@ export class UpdateRoleUseCase {
     }
 
     role.name = name;
-
     return this.rolesRepository.save(role);
   }
 }

@@ -5,6 +5,7 @@ import { AppError } from '@shared/errors/AppError';
 import { User } from '@users/entities/User';
 import { IUsersRepository } from '@users/repositories/IUserRepository';
 import uploadConfig from '@config/upload';
+import { instanceToInstance } from 'class-transformer';
 
 type UpdateAvatarDTO = {
   userId: string;
