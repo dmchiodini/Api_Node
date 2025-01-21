@@ -5,11 +5,12 @@ import { CreateUsersTable1737049571364 } from './migrations/1737049571364-Create
 import { AddRoleIdToUsersTable1737050186433 } from './migrations/1737050186433-AddRoleIdToUsersTable';
 import { User } from '@users/entities/User';
 import { CreateRefreshTokenTable1737494963781 } from './migrations/1737494963781-CreateRefreshTokenTable';
+import { RefreshToken } from '@users/entities/RefreshToken';
 
 export const dataSource = new DataSource({
   type: 'sqlite',
   database: './db.sqlite',
-  entities: [Role, User],
+  entities: [Role, User, RefreshToken],
   migrations: [
     CreateRolesTable1736776129253,
     CreateUsersTable1737049571364,
