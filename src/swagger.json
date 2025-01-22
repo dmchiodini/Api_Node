@@ -3,10 +3,14 @@
   "info": {
     "title": "MyAPI Documentation",
     "description": "MyAPI Documentation with all specifications",
-    "version": "1.0.0",
-    "contact": {
-      "name": "Jorge Aluizio",
-      "email": "aluiziodeveloper@gmail.com"
+    "version": "1.0.0"
+  },
+  "securityDefinitions": {
+    "JWT": {
+      "type": "apiKey",
+      "name": "Authorization",
+      "scheme": "bearer",
+      "in": "header"
     }
   },
   "paths": {
@@ -71,7 +75,7 @@
             "required": false,
             "schema":{
               "type":"number",
-              "example": "page=1"
+              "example": "1"
             },
             "style": "label"
           },
@@ -82,7 +86,7 @@
             "required": false,
             "schema":{
               "type":"number",
-              "example": "limit=15"
+              "example": "15"
             },
             "style": "label"
           }
@@ -375,7 +379,7 @@
             "required": false,
             "schema":{
               "type":"number",
-              "example": "page=1"
+              "example": "1"
             },
             "style": "label"
           },
@@ -386,7 +390,7 @@
             "required": false,
             "schema":{
               "type":"number",
-              "example": "limit=15"
+              "example": "15"
             },
             "style": "label"
           }
@@ -445,6 +449,7 @@
     },
     "/users/login": {
       "post": {
+        "security": [],
         "tags": ["Users"],
         "summary": "User authenticate",
         "description": "User authentication in the application",
@@ -462,7 +467,7 @@
                   }
                 },
                 "example": {
-                  "email": "aluiziodeveloper@gmail.com",
+                  "email": "user@email.com",
                   "password": "123456"
                 }
               }
@@ -515,7 +520,7 @@
                   "user": {
                     "id": "3f33cb96-28ef-45f5-b6f4-dcadf80c72d0",
                     "name": "Aluizio Developer",
-                    "email": "aluiziodeveloper@gmail.com",
+                    "email": "user@email.com",
                     "isAdmin": true,
                     "avatar": "9fe542a6a59c65f08eac_avatar01.jpeg",
                     "created_at": "2010-06-18T19:17:09.000Z",
@@ -604,7 +609,7 @@
                   "user": {
                     "id": "3f33cb96-28ef-45f5-b6f4-dcadf80c72d0",
                     "name": "Aluizio Developer",
-                    "email": "aluiziodeveloper@gmail.com",
+                    "email": "user@email.com",
                     "isAdmin": true,
                     "avatar": "9fe542a6a59c65f08eac_avatar01.jpeg",
                     "created_at": "2010-06-18T19:17:09.000Z",
@@ -657,7 +662,7 @@
                 },
                 "example": {
                   "name": "Aluizio Developer",
-                  "email": "aluiziodeveloper@gmail.com",
+                  "email": "user@email.com",
                   "password": "123456",
                   "password_confirmation": "123456",
                   "old_password": "1234"
@@ -700,7 +705,7 @@
                 "example": {
                   "id": "3f33cb96-28ef-45f5-b6f4-dcadf80c72d0",
                   "name": "Aluizio Developer",
-                  "email": "aluiziodeveloper@gmail.com",
+                  "email": "user@email.com",
                   "isAdmin": true,
                   "avatar": "9fe542a6a59c65f08eac_avatar01.jpeg",
                   "created_at": "2010-06-18T19:17:09.000Z",
@@ -758,7 +763,7 @@
                 "example": {
                   "id": "3f33cb96-28ef-45f5-b6f4-dcadf80c72d0",
                   "name": "Aluizio Developer",
-                  "email": "aluiziodeveloper@gmail.com",
+                  "email": "user@email.com",
                   "isAdmin": true,
                   "avatar": "9fe542a6a59c65f08eac_avatar01.jpeg",
                   "created_at": "2010-06-18T19:17:09.000Z",
@@ -833,7 +838,7 @@
                 "example": {
                   "id": "3f33cb96-28ef-45f5-b6f4-dcadf80c72d0",
                   "name": "Aluizio Developer",
-                  "email": "aluiziodeveloper@gmail.com",
+                  "email": "user@email.com",
                   "isAdmin": true,
                   "avatar": "9fe542a6a59c65f08eac_avatar01.jpeg",
                   "created_at": "2010-06-18T19:17:09.000Z",
@@ -854,5 +859,16 @@
         }
       }
     }
-  }
+  },
+  "components": {
+    "securitySchemes": {
+      "JWT": {
+        "type": "apiKey",
+        "name": "Authorization",
+        "scheme": "bearer",
+        "in": "header"
+      }
+    }
+  },
+  "security": [{ "JWT": [] }]
 }
