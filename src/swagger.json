@@ -503,7 +503,10 @@
                         }
                       }
                     },
-                    "token": {
+                    "accessToken": {
+                      "type": "string"
+                    },
+                    "refreshToken": {
                       "type": "string"
                     }
                   }
@@ -518,7 +521,8 @@
                     "created_at": "2010-06-18T19:17:09.000Z",
                     "avatar_url": "http://localhost:3000/files/9fe542a6a59c65f08eac_avatar01.jpeg"
                   },
-                  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NTU2ODUzMzYsImV4cCI6MTY1NTc3MTczNiwic3ViIjoiM2YzM2NiOTYtMjhlZi00NWY1LWI2ZjQtZGNhZGY4MGM3MmQwIn0.OF3gjxJhOW4xa1i5Uhh_qRgo-SyllMRXroYO_ddFpQM"
+                  "accessToken": "eyJhbGciOiJIUzI1NiICI6IkpXVCJ9.eyJpYXQiOjE3Mzc1NzA2NDMsIm3MDY1Mywic3ViIjoiZmJlMDJhODItMDM2ZC00MWIxLTk1YWEtNmI2ZjZiYTM3NDg5In0.Zlo0dmAucP5iugXFFX_5zIAHcdCGaNWOxfcEsTUHmt4",
+                  "refreshToken": "eyJhbGciOiJIUnR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mzc1NzA2NDCI6MTczNzU3MTI0Mywic3ViIjoiZmJlMDJhODItMDM2ZC00MWIxLTk1YWEtNmI2ZjZiYTM3NDg5In0.ii5pGeu5VuxJsAtYLuwkBblMRnRq4FBxVGnvzVNncak"
                 }
               }
             }
@@ -528,6 +532,98 @@
           },
           "401": {
             "description": "Incorrect email/password combination."
+          }
+        }
+      }
+    },
+    "/users/refresh_token": {
+      "post": {
+        "tags": ["Users"],
+        "summary": "Validate and generate token",
+        "description": "Get a new access and refresh token",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "refresh_token": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVDO8.eyJpYXQiOjE3Mzc1NzA2NDMsImV4cCI6MTczNzU3MTI0Mywic3ViIjoiZmJlMDJhODItMDM2ZC00MWIxLTk1YWEtNmI2ZjZiYTM3NDg5In0.ii5pGeu5VuxJsAtYLuwkBblMRnRq4FBxVGnvzVNncak"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Success.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "user": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "email": {
+                          "type": "string"
+                        },
+                        "isAdmin": {
+                          "type": "boolean"
+                        },
+                        "avatar": {
+                          "type": "string"
+                        },
+                        "avatar_url": {
+                          "type": "string"
+                        },
+                        "created_at": {
+                          "type": "datetime"
+                        }
+                      }
+                    },
+                    "accessToken": {
+                      "type": "string"
+                    },
+                    "refreshToken": {
+                      "type": "string"
+                    }
+                  }
+                },
+                "example": {
+                  "user": {
+                    "id": "3f33cb96-28ef-45f5-b6f4-dcadf80c72d0",
+                    "name": "Aluizio Developer",
+                    "email": "aluiziodeveloper@gmail.com",
+                    "isAdmin": true,
+                    "avatar": "9fe542a6a59c65f08eac_avatar01.jpeg",
+                    "created_at": "2010-06-18T19:17:09.000Z",
+                    "avatar_url": "http://localhost:3000/files/9fe542a6a59c65f08eac_avatar01.jpeg"
+                  },
+                  "accessToken": "eyJhbGciOiJIUzI1NiICI6IkpXVCJ9.eyJpYXQiOjE3Mzc1NzA2NDMsIm3MDY1Mywic3ViIjoiZmJlMDJhODItMDM2ZC00MWIxLTk1YWEtNmI2ZjZiYTM3NDg5In0.Zlo0dmAucP5iugXFFX_5zIAHcdCGaNWOxfcEsTUHmt4",
+                  "refreshToken": "eyJhbGciOiJIUnR5cCI6IkpXVCJ9.eyJpYXQiOjE3Mzc1NzA2NDCI6MTczNzU3MTI0Mywic3ViIjoiZmJlMDJhODItMDM2ZC00MWIxLTk1YWEtNmI2ZjZiYTM3NDg5In0.ii5pGeu5VuxJsAtYLuwkBblMRnRq4FBxVGnvzVNncak"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "401": {
+            "description": "Refresh token is invalid/expired"
+          },
+          "404": {
+            "description": "User not found."
           }
         }
       }
